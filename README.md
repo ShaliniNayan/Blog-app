@@ -62,8 +62,7 @@ In order to run this project you need:
 Example command:
 
 ```sh
- Install Ruby
- Install rails
+ bundle install
 ```
 
 ### Setup
