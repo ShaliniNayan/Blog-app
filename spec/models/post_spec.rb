@@ -58,7 +58,7 @@ RSpec.describe Post, type: :model do
 
   describe '#five_most_recent_comments' do
     it 'returns the 5 most recent comments' do
-      user = User.create(name: 'Salim')
+      user = User.create(name: 'Shalini')
       comment1 = Comment.create(author: user, post: subject, text: 'comment 1', created_at: 5.day.ago)
       comment2 = Comment.create(author: user, post: subject, text: 'comment 2', created_at: 4.day.ago)
       comment3 = Comment.create(author: user, post: subject, text: 'comment 3', created_at: 3.day.ago)
