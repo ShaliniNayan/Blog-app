@@ -1,10 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
-  describe "GET /users" do
-    it "works! (now write some real specs)" do
-      get users_index_path
-      expect(response).to have_http_status(200)
+RSpec.describe UsersController, type: :controller do
+  describe "GET #index" do
+    it "returns http success" do
+      get :index
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #show" do
+    it "returns http success" do
+      user = create(:user) # Assuming you use FactoryBot for creating test data
+      get :show, params: { id: user.id }
+      expect(response).to have_http_status(:success)
     end
   end
 end
