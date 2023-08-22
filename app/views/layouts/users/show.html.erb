@@ -1,0 +1,11 @@
+<h1><%= @user.name %>'s Profile</h1>
+<%= image_tag @user.photo.url, alt: 'User Photo', class: 'user-photo' %>
+<p>Bio: <%= @user.bio %></p>
+<p>Total Posts: <%= @user.posts_counter %></p>
+
+<h2>Latest Posts:</h2>
+<ul>
+  <% @user.three_most_recent_posts.each do |post| %>
+    <li><%= link_to post.title, post_path(post) %></li>
+  <% end %>
+</ul>
