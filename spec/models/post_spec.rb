@@ -50,6 +50,8 @@ RSpec.describe Post, type: :model do
       user = User.create(name: 'Sam')
       post = Post.create(title: 'Hello', author: user)
 
+      binding.pry
+
       post.update_user_posts_counter
 
       expect(user.reload.posts_counter).to eq(1)
