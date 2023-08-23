@@ -1,11 +1,19 @@
-<h1><%= @user.name %>'s Profile</h1>
-<%= image_tag @user.photo.url, alt: 'User Photo', class: 'user-photo' %>
-<p>Bio: <%= @user.bio %></p>
-<p>Total Posts: <%= @user.posts_counter %></p>
-
-<h2>Latest Posts:</h2>
-<ul>
-  <% @user.three_most_recent_posts.each do |post| %>
-    <li><%= link_to post.title, post_path(post) %></li>
+<div class="container mt-5">
+  <%= render 'partial/user_card', user: @user %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title">Bio</h4>
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+  <% @posts.each do |post| %>
+    <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="text-decoration-none">
+      <div class="mb-3">
+        <%= render 'partial/post_card', post: post %>
+      </div>
+    </a>
   <% end %>
-</ul>
+  <div class="w-100 mt-5 d-flex justify-content-center align-items-center">
+    <a href="/users/<%= @user.id %>/posts" class="btn btn-primary">See all posts</a>
+  </div>
+</div>
