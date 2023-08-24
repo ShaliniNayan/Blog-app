@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <%= render 'partial/user_card', user: @author %>
+  <%= render 'partials/user_card', user: @author %>
 
   <% if @posts.empty? %>
     <p>This user has no posts yet</p>
@@ -7,8 +7,8 @@
   <% @posts.each do |post| %>
     <a href="/users/<%= post.author.id %>/posts/<%= post.id %>" class="text-decoration-none">
       <div class="mb-4">
-        <%= render 'partial/post_card', post: post %>
-        <%= render 'partial/comments_card', comments: post.five_recent_comments unless post.five_recent_comments.empty? %>
+        <%= render 'partials/post_card', post: post %>
+        <%= render 'partials/comments_card', comments: post.five_recent_comments unless post.five_recent_comments.empty? %>
       </div>
     </a>
   <% end %>
