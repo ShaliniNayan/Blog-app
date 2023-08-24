@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title"><%= post.title %></h4>
+    <div class="text-truncate text-justify"><%= post.text %></div>
+    <div class="d-flex justify-content-end gap-1 align-items-end">
+      <p class="m-0">Comments: <%= post.comments_counter %>,</p>
+      <p class="m-0">Likes: <%= post.likes_counter %></p>
+    </div>
+  </div>
+</div>
