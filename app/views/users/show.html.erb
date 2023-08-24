@@ -13,11 +13,15 @@
 </div>
 
 <div class="recent-posts">
-  <h4>Recent Posts</h4>
-  <ul>
   <% @posts.each do |post| %>
-    <li><%= link_to post.title, user_post_path(@user, post) %></li>
+    <a href="/users/<%= post.author.id %>/posts/<%= post.id %>" class="text-decoration-none">
+      <div class="mb-4">
+        <%= render 'partials/post_card', post: post %>
+       
+      </div>
+    </a>
   <% end %>
-</ul>
+  <span class="d-flex justify-content-center">
  <%= link_to "See All Posts", user_posts_path(@user) %>
+ </span>
 </div>
