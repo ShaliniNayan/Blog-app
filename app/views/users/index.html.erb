@@ -2,9 +2,11 @@
   <% if @users.empty? %>
     <p>Please add users</p>
   <% end %>
+  
   <% @users.each do |user| %>
     <a href="/users/<%= user.id %>" class="text-decoration-none">
-      <%= render partial: 'partials/user_card', locals: { user: user } %>
+      <%= render 'partials/user_card', user: user %>
     </a>
+ 
   <% end %>
 </div>
