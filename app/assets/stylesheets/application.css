@@ -12,7 +12,7 @@ body {
 .user-info-card {
   flex: 2;
   padding: 0 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-img-top {
@@ -33,11 +33,6 @@ body {
 .user-info-card .card-text {
   font-size: 1rem;
   margin: 0;
-}
-
-.user-info-card .card-body {
-  display: flex;
-  justify-content: space-between;
 }
 
 .post-number {
