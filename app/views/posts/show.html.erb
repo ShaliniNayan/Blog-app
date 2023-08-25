@@ -1,5 +1,4 @@
 <div class="container mt-5">
-  
   <div class="card mb-4">
     <div class="card-body">
       <h4 class="card-title"><%= @post.title %> by <%= @post.author.name %></h4>
@@ -8,8 +7,20 @@
         <p class="m-0">Likes: <%= @post.likes_counter %></p>
       </div>
       <p class="mt-2"><%= @post.text %></p>
+
+      <!-- Like form here -->
+      <%= form_for(@post.likes.new, url: user_post_likes_path(@post.author, @post)) do |f| %>
+        <%= f.hidden_field :author_id, value: current_user.id %>
+        <%= f.submit "Like", class: "btn btn-primary" %>
+      <% end %>
+
+      <%= form_for(@post.comments.new, url: user_post_comments_path(@post.author, @post)) do |f| %>
+        <%= f.text_area :text, placeholder: "Leave a comment..." %>
+        <%= f.hidden_field :author_id, value: current_user.id %>
+        <%= f.submit "Comment", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
-  
-  <%= render partial: 'partials/comments_card', locals: { comments: @post.comments } unless @post.comments.empty? %>
+
+  <%= render partial: 'partials/comments_card', locals: { comments: @post.comments } unless @post.comments.empty?%>
 </div>
