@@ -1,8 +1,23 @@
-<h1><%= @user.name%>'s Posts</h1>
-<ul>
-    <% @posts.each do |post|%>
-        <li>post_id: <%= post.id %>
-        <span>post_title: <%= post.title %></span>
-        </li>
-        <% end %>
-</ul>
+<div class="container mt-5">
+  <%= render 'partials/user_card', user: @author %>
+
+  <% if @posts.empty? %>
+    <p>This user has no posts yet</p>
+  <% end %>
+  <% @posts.each do |post| %>
+    <a href="/users/<%= post.author.id %>/posts/<%= post.id %>" class="text-decoration-none">
+      <div class="mb-4">
+        <%= render 'partials/post_card', post: post %>
+        <%= render 'partials/comments_card', comments: post.five_recent_comments unless post.five_recent_comments.empty? %>
+      </div>
+    </a>
+  <% end %>
+  <nav aria-label="Pagination for posts" class="mt-5">
+    <ul class="pagination justify-content-center">
+      <% (1..@total_pages).each do |page| %>
+        <li class="page-item"><a class="page-link" href="/users/<%= @author.id %>/posts?page=<%= page %>"><%= page %></a></li>
+      <% end %>
+    </ul>
+  </nav>
+  
+</div>
