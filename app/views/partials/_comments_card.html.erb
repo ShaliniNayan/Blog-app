@@ -1,7 +1,11 @@
 <div class="card">
   <div class="card-body">
     <% comments.each do |comment| %>
-      <p><%= comment.author.name %>: <%= comment.text %></p>
+      <% if comment.author %>
+        <p><%= comment.author.name %>: <%= comment.text %></p>
+      <% else %>
+        <p><%= comment.text %></p>
+      <% end %>
     <% end %>
   </div>
 </div>
