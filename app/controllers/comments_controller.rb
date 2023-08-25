@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
     @comment.author = current_user
 
     if @comment.save
-      redirect_to user_post_path(@post.author, @post), notice: "Comment was successfully added."
+      redirect_to user_post_path(@post.author, @post), notice: 'Comment was successfully added.'
     else
       # Render the post's show page with the form
-      render "posts/show"
+      render 'posts/show'
     end
   end
 
