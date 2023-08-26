@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   before_action :require_user
   before_action :set_post
 
+  def new
+    @comment = Comment.new
+  end
+
   def create
     @comment = @post.comments.build(comment_params)
     @comment.author = current_user
@@ -9,7 +13,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to user_post_path(@post.author, @post), notice: 'Comment was successfully added.'
     else
-      # Render the post's show page with the form
+    
       render 'posts/show'
     end
   end
