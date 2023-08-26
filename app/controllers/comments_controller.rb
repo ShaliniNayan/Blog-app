@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to user_post_path(@post.author, @post), notice: 'Comment was successfully added.'
     else
-    
+
       render 'posts/show'
     end
   end

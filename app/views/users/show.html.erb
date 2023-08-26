@@ -1,3 +1,7 @@
+<span class="d-flex justify-content-end">
+<%= link_to "Create New Post", new_user_post_path(@user), class: "btn btn-primary" %>
+</span><br>
+
 <div>
  <%= render partial: 'partials/user_card', locals: { user: @user } %>
 </div>
@@ -10,12 +14,16 @@
 </div><br>
 
 <div class="recent-posts">
-  <% @posts.each do |post| %>
-    <a href="/users/<%= post.author.id %>/posts/<%= post.id %>" class="text-decoration-none">
-      <div class="mb-4">
-        <%= render 'partials/post_card', post: post %>
-      </div>
-    </a>
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <a href="<%= user_post_path(post.author, post) %>" class="text-decoration-none">
+        <div class="mb-4">
+          <%= render 'partials/post_card', post: post %>
+        </div>
+      </a>
+    <% end %>
+  <% else %>
+    <p>No posts available.</p>
   <% end %>
   <button class="d-flex justify-content-center btn-post">
     <%= link_to "See All Posts", user_posts_path(@user) %>

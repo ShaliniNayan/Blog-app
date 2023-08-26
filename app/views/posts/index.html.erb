@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <%= render 'partials/user_card', user: @author %>
+  <%= render partial: 'partials/user_card', locals: { user: @user } %>
 
   <% if @posts.empty? %>
     <p>This user has no posts yet</p>
@@ -12,12 +12,15 @@
       </div>
     </a>
   <% end %>
+
   <nav aria-label="Pagination for posts" class="mt-5">
     <ul class="pagination justify-content-center">
       <% (1..@total_pages).each do |page| %>
-        <li class="page-item"><a class="page-link" href="/users/<%= @author.id %>/posts?page=<%= page %>"><%= page %></a></li>
+        <li class="page-item <%= 'active' if params[:page].to_i == page %>">
+          <a class="page-link" href="<%= user_posts_path(@user, page: page) %>"><%= page %></a>
+        </li>
       <% end %>
     </ul>
   </nav>
-  
+
 </div>
