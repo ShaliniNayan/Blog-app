@@ -1,6 +1,5 @@
 <div class="container mt-5">
   <%= render partial: 'partials/user_card', locals: { user: @user } %>
-
   <% if @posts.empty? %>
     <p>This user has no posts yet</p>
   <% end %>
@@ -12,7 +11,6 @@
       </div>
     </a>
   <% end %>
-
   <nav aria-label="Pagination for posts" class="mt-5">
     <ul class="pagination justify-content-center">
       <% (1..@total_pages).each do |page| %>
@@ -22,5 +20,4 @@
       <% end %>
     </ul>
   </nav>
-
 </div>
