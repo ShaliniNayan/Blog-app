@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User Show', type: :feature do
+RSpec.feature 'User Index', type: :feature do
   let(:user) { User.create(name: 'Tom', photo: 'https://www.kasandbox.org/programming-images/avatars/leaf-blue.png', bio: 'He is a good programmer') }
   let!(:post1) { Post.create(author: user, title: 'first post', text: 'first text') }
   let!(:post2) { Post.create(author: user, title: 'second post', text: 'second text') }
