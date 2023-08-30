@@ -22,7 +22,6 @@ RSpec.feature 'Post Index', type: :feature do
     expect(page).to have_content('Likes: 1')
   end
 
-
   scenario "see some of the post's title, body and first comments" do
     visit user_posts_path(user)
     expect(page).to have_content('first text')
