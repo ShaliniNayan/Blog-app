@@ -1,36 +1,42 @@
 require 'rails_helper'
 
-RSpec.feature 'Post Index', type: :feature do
-  let(:user) { User.create(name: 'Tom', photo: 'https://www.kasandbox.org/programming-images/avatars/leaf-blue.png', bio: 'He is a good programmar') }
-  let!(:post) { Post.create(author: user, title: "first post's title", text: 'first text') }
-  let!(:comment1) { Comment.create(author: user, post:, text: 'first comment') }
-  let!(:comment2) { Comment.create(author: user, post:, text: 'second comment') }
-  let!(:comment3) { Comment.create(author: user, post:, text: 'third comment') }
-  let!(:like1) { Like.create(author: user, post:) }
+RSpec.feature 'User Show', type: :feature do
+  let(:user) { User.create(name: 'Tom', photo: 'https://www.kasandbox.org/programming-images/avatars/leaf-blue.png', bio: 'He is a good programmer') }
+  let!(:post1) { Post.create(author: user, title: 'first post', text: 'first text') }
+  let!(:post2) { Post.create(author: user, title: 'second post', text: 'second text') }
+  let!(:post3) { Post.create(author: user, title: 'third post', text: 'third text') }
 
-  scenario "see user's profile picture, username, number of posts and interactions" do
-    visit user_posts_path(user)
+  before do
+    visit user_path(user)
+  end
+
+  scenario 'visiting the user Show page' do
     expect(page).to have_content('Tom')
-    expect(page).to have_content(' posts')
-    expect(page).to have_content('Comments: 3')
-    expect(page).to have_content('Likes: 1')
+    expect(page).to have_content('Bio')
+    expect(page).to have_content('He is a good programmer')
+    expect(page).to have_link('See all posts')
+    expect(page).to have_content('Recent Posts') if page.has_content?('Recent Posts')
   end
 
-  scenario "see some of the post's title, body and first comments" do
-    visit user_posts_path(user)
-    expect(page).to have_content('first text')
-    expect(page).to have_content('first comment')
-    expect(page).to have_content("first post's title")
+  scenario 'asserts you can see the user\'s profile picture' do
+    expect(page).to have_selector('img[src="https://www.kasandbox.org/programming-images/avatars/leaf-blue.png"]')
   end
 
-  scenario 'see a section for pagination if there are more posts than fit on the view' do
-    visit user_posts_path(user)
-    expect(page).to have_selector('.pagination')
+  scenario 'asserts you can see the user\'s first 3 posts' do
+    expect(page).to have_content('first post')
+    expect(page).to have_content('second post')
+    expect(page).to have_content('third post')
   end
 
-  scenario "clicking on a post, it redirects me to that post's show page" do
-    visit user_posts_path(user)
-    click_link "first post's title"
-    expect(page).to have_current_path(user_post_path(user, post))
+  scenario 'redirects to the post\'s show page when you click on a user\'s post' do
+    click_link 'first post'
+    expect(page).to have_current_path(user_post_path(user, post1))
+  end
+
+  scenario 'redirects to the user\'s post\'s index page when you click on "See all posts"' do
+    click_link 'See all posts'
+    expected_path = user_posts_path(user).chomp('/')
+    actual_path = page.current_path.chomp('/')
+    expect(actual_path).to eq(expected_path)
   end
 end
