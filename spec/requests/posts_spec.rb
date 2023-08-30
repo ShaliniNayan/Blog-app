@@ -1,20 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
-  describe 'GET #index' do
+RSpec.describe 'Posts', type: :request do
+  describe 'GET /index' do
     it 'returns http success' do
-      user = create(:user)
-      get :index, params: { user_id: user.id }
-      expect(response).to have_http_status(:success)
+      get '/users/1/posts'
+      expect(response).to be_successful
+    end
+
+    it 'check if correct template was rendered' do
+      get '/users/1/posts'
+      expect(response).to render_template(:index)
+    end
+
+    it 'response body includes correct placeholder text' do
+      get '/users/1/posts'
+      expect(response.body).to include('Posts are coming soon!')
     end
   end
 
-  describe 'GET #show' do
-    it 'returns http success' do
-      user = create(:user)
-      post = create(:post, user:)
-      get :show, params: { user_id: user.id, id: post.id }
-      expect(response).to have_http_status(:success)
+  describe 'GET /show' do
+    it 'correct response status' do
+      get '/users/1/posts/1'
+      expect(response).to be_successful
+    end
+
+    it 'check if correct template was rendered' do
+      get '/users/1/posts/1'
+      expect(response).to render_template(:show)
+    end
+
+    it 'response body includes correct placeholder text' do
+      get '/users/1/posts/1'
+      expect(response.body).to include('Here is a list of posts for a given user!')
     end
   end
 end

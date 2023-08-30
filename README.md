@@ -102,6 +102,10 @@ To run tests, run the following command:
 - Twitter: [@sndprs](https://twitter.com/sndprs)
 - LinkedIn: [shalininayan](https://www.linkedin.com/in/shalininayan/)
 
+- GitHub: [Nasirkhan294](https://github.com/Nasirkhan294)
+- Twitter: [NasirMa35888225](https://twitter.com/NasirMa35888225)
+- LinkedIn: [nasirmahd](https://www.linkedin.com/in/nasirmahd/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
