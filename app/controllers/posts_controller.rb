@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_user, except: %i[index show]
+  
   def index
     per_page = 10
     page = params[:page].to_i
