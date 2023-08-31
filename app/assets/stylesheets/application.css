@@ -104,6 +104,10 @@ body {
   flex: 1;
 }
 
+.actions {
+  width: 100%;
+}
+
 .actions input {
   border-radius: 5px;
   background: rgb(0, 46, 0);
