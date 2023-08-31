@@ -47,6 +47,20 @@
 
 - Display likes on posts
 
+- Validation & Unit Tests
+
+- Controllers
+
+- Views
+
+- Add Forms
+
+- Capybara tests
+
+- Add devise
+
+- Add authorization
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
