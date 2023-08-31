@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  
   def index
     per_page = 10
     page = params[:page].to_i
