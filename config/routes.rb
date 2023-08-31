@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :posts, only: %i[index show new create] do
       resources :likes, only: [:create]
       resources :comments, only: %i[new create]
-      # get 'likes', to: 'likes#like', on: :member
     end
   end
 end
